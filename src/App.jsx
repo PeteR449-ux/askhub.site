@@ -1,11 +1,34 @@
-import React from 'react';
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Home from "./Pages/Home";
+import Feedback from "./Pages/Feedback";
+import Services from "./Pages/Services";
+import AdminDashboard from "./Pages/AdminDashboard";
+import HelpUs from "./Pages/HelpUs";
+import Search from "./Pages/Search";
+import ProtectedRoute from "./ProtectedRoute";
+import AdminLogin from "./Pages/AdminLogin";
 
 const App = () => {
   return (
-    <div style={{ textAlign: 'center', padding: '3rem' }}>
-      <h1>🚀 Welcome to AskHub</h1>
-      <p>This is your smart information site. Ask anything.</p>
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/feedback" element={<Feedback />} />
+      <Route path="/services" element={<Services />} />
+      <Route path="/admin" element={<AdminDashboard />} />
+      <Route path="/help-us" element={<HelpUs />} />
+      <Route path="/search" element={<Search />} />
+      <Route path="/admin-login" element={<AdminLogin />} />
+<Route
+  path="/admin/dashboard"
+  element={
+    <ProtectedRoute>
+      <AdminDashboard />
+    </ProtectedRoute>
+  }
+/>
+
+    </Routes>
   );
 };
 

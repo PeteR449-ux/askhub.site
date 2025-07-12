@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { db } from "../firebaseConfig";
+import { db, auth } from "../firebaseConfig";
 import { collection, getDocs } from "firebase/firestore";
 
 const AdminDashboard = () => {
@@ -18,17 +18,37 @@ const AdminDashboard = () => {
     fetchFeedbacks();
   }, []);
 
+  const handleLogout = () => {
+    auth.signOut();
+  };
+
   return (
-    <div className="min-h-screen p-6">
-      <h1 className="text-3xl font-bold mb-6">Admin Dashboard</h1>
+    <div className="min-h-screen bg-gray-100 p-6">
+      <div className="flex justify-between items-center mb-8">
+        <h1 className="text-4xl font-bold text-gray-800">🧠 Admin Dashboard</h1>
+        <button
+          onClick={handleLogout}
+          className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition"
+        >
+          Logout
+        </button>
+      </div>
+
       {feedbacks.length === 0 ? (
-        <p>No feedback submitted yet.</p>
+        <p className="text-gray-600 text-lg">No feedback submitted yet.</p>
       ) : (
         <ul className="space-y-4">
           {feedbacks.map((item) => (
-            <li key={item.id} className="border p-4 rounded-lg bg-gray-100 dark:bg-gray-800">
-              <p>{item.message}</p>
-              <p className="text-xs text-gray-500 mt-2">🕒 {item.timestamp?.toDate?.().toLocaleString()}</p>
+            <li
+              key={item.id}
+              className="border border-gray-300 bg-white rounded-xl shadow p-5"
+            >
+              <p className="text-gray-800 text-lg">{item.message}</p>
+              {item.timestamp?.toDate && (
+                <p className="text-sm text-gray-500 mt-2">
+                  🕒 {item.timestamp.toDate().toLocaleString()}
+                </p>
+              )}
             </li>
           ))}
         </ul>
@@ -38,3 +58,4 @@ const AdminDashboard = () => {
 };
 
 export default AdminDashboard;
+

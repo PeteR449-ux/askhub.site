@@ -19,29 +19,32 @@ const AdminLogin = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-4">
-      <h1 className="text-3xl font-bold mb-4">Admin Login</h1>
-      <input
-        type="email"
-        className="border px-4 py-2 mb-2 rounded-lg w-80"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
-        type="password"
-        className="border px-4 py-2 mb-2 rounded-lg w-80"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button
-        onClick={handleLogin}
-        className="bg-black text-white px-6 py-2 rounded-lg hover:bg-gray-800"
-      >
-        Login
-      </button>
-      {error && <p className="text-red-500 mt-4">{error}</p>}
+    <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-300 flex flex-col items-center justify-center p-6">
+      <h1 className="text-4xl font-bold text-gray-800 mb-6">🔐 Admin Login</h1>
+
+      <div className="bg-white shadow-xl rounded-xl p-6 w-full max-w-md">
+        <input
+          type="email"
+          placeholder="Email"
+          className="border w-full px-4 py-2 mb-4 rounded-md"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          className="border w-full px-4 py-2 mb-4 rounded-md"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button
+          onClick={handleLogin}
+          className="bg-black text-white w-full py-2 rounded-md hover:bg-gray-800 transition"
+        >
+          Login
+        </button>
+        {error && <p className="text-red-600 mt-4 text-center">{error}</p>}
+      </div>
     </div>
   );
 };

@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Optional: Add smooth font and custom tweaks */
+body {
+  font-family: 'Inter', sans-serif;
+}
