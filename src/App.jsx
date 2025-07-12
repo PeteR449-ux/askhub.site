@@ -8,7 +8,6 @@ import HelpUs from "./Pages/HelpUs";
 import Search from "./Pages/Search";
 import ProtectedRoute from "./ProtectedRoute";
 import AdminLogin from "./Pages/AdminLogin";
-import { Analytics } from "@vercel/analytics/next"
 
 const App = () => {
   return (
