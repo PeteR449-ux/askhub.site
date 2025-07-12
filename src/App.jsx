@@ -6,8 +6,8 @@ import Services from "./Pages/Services";
 import AdminDashboard from "./Pages/AdminDashboard";
 import HelpUs from "./Pages/HelpUs";
 import Search from "./Pages/Search";
-import ProtectedRoute from "./ProtectedRoute";
 import AdminLogin from "./Pages/AdminLogin";
+import ProtectedRoute from "./Components/AdminProtectedRoute"; // renamed for clarity
 
 const App = () => {
   return (
@@ -15,22 +15,23 @@ const App = () => {
       <Route path="/" element={<Home />} />
       <Route path="/feedback" element={<Feedback />} />
       <Route path="/services" element={<Services />} />
-      <Route path="/admin" element={<AdminDashboard />} />
       <Route path="/help-us" element={<HelpUs />} />
       <Route path="/search" element={<Search />} />
-      <Route path="/admin-login" element={<AdminLogin />} />
-<Route
-  path="/admin/dashboard"
-  element={
-    <ProtectedRoute>
-      <AdminDashboard />
-    </ProtectedRoute>
-  }
-/>
+      
+      {/* Admin Login Page (Public) */}
+      <Route path="/admin" element={<AdminLogin />} />
 
+      {/* Protected Dashboard */}
+      <Route
+        path="/admin/dashboard"
+        element={
+          <ProtectedRoute>
+            <AdminDashboard />
+          </ProtectedRoute>
+        }
+      />
     </Routes>
   );
 };
 
 export default App;
-
